@@ -57,13 +57,11 @@ var protoX = Object.getPrototypeOf(x)
     console.log('Class name: ' + protoX.constructor.name);
     for(key in protoX){
       if(protoX.hasOwnProperty(key)){
-
         console.log('Method: ' + key);
       }
     }
     reflector(protoX);
   }
-  console.log('fdsafas');
-  return false;
+
 
 }
