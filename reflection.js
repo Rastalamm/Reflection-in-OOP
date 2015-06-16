@@ -26,7 +26,6 @@ GroupUser.prototype.groupNums = function (numUser) {
 
 
 
-
 function SuperUser(){
 
 }
@@ -62,6 +61,4 @@ var protoX = Object.getPrototypeOf(x)
     }
     reflector(protoX);
   }
-
-
 }
