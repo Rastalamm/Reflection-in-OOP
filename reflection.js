@@ -1,39 +1,39 @@
-function User(name, email){
-  this.name = name;
-  this.email = email;
+function User (){
+
 }
 
-User.prototype.logInMessage = function() {
+User.prototype.logInMessage = function(name) {
+  this.name = name;
   console.log(name + ', you are now logged in!');
 };
 
 
-function GroupUser(numUser){
-  User.call(this, name, email);
-  this.numUser = numUser;
+function GroupUser (){
+
 }
 
-GroupUser.prototype = Object.create(GroupUser.prototype, {
+GroupUser.prototype = Object.create(User.prototype, {
   constructor: {
-    value : User
+    value : GroupUser
   }
 })
 
 
-GroupUser.prototype.groupNums = function(numUser) {
-  console.log('You have ' + x + ' users in your group.' );
+GroupUser.prototype.groupNums = function (numUser) {
+  this.numUser = numUser;
+  console.log('You have ' + numUser + ' users in your group.' );
 };
 
 
 
 
 function SuperUser(){
-  GroupUser.call(this, numUser);
+
 }
 
-SuperUser.prototype = Object.create(SuperUser.prototype, {
+SuperUser.prototype = Object.create(GroupUser.prototype, {
   constructor: {
-    value : GroupUser
+    value : SuperUser
   }
 })
 
@@ -43,4 +43,27 @@ SuperUser.prototype.flying = function() {
 };
 
 
+var judah = new User('Judah', 'judah.lamm@gmail.com');
+var groupJudah = new GroupUser(55);
+var superJudah = new SuperUser();
 
+
+
+var reflector = function (x){
+
+var protoX = Object.getPrototypeOf(x)
+
+  if(protoX && protoX.constructor.name !== 'Object'){
+    console.log('Class name: ' + protoX.constructor.name);
+    for(key in protoX){
+      if(protoX.hasOwnProperty(key)){
+
+        console.log('Method: ' + key);
+      }
+    }
+    reflector(protoX);
+  }
+  console.log('fdsafas');
+  return false;
+
+}
